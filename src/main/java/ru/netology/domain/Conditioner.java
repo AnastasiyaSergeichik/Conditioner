@@ -1,19 +1,10 @@
 package ru.netology.domain;
 
 public class Conditioner {
-    private String name;
     private int maxTemperature;
     private int minTemperature;
     private int currentTemperature;
-    private boolean on;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getMaxTemperature() {
         return maxTemperature;
@@ -36,43 +27,21 @@ public class Conditioner {
     }
 
     public void setCurrentTemperature(int currentTemperature) {
-        if (currentTemperature > maxTemperature) {
+       this.currentTemperature = currentTemperature;
+   }
+
+
+        public void increaseCurrentTemperature() {
+        if (currentTemperature >= maxTemperature) {
             return;
+
         }
-        if (currentTemperature < minTemperature) {
-            return;
-        }
-        // здесь уверены, что все проверки прошли
-        this.currentTemperature = currentTemperature;
+        this.currentTemperature++;
     }
-
-//    public void setCurrentTemperature(int currentTemperature) {
-//        if (currentTemperature <= maxTemperature) {
-//            if (currentTemperature >= minTemperature) {
-//                this.currentTemperature = currentTemperature;
-//            }
-//        }
-//    }
-
-    public boolean isOn() {
-        return on;
-    }
-
-    public void setOn(boolean on) {
-        this.on = on;
-    }
-
-    public void increaseCurrentTemperature() {
-        if (this.currentTemperature == maxTemperature) {
-            return;
-        }
-        this.currentTemperature ++;
-    }
-    public void decreaseCurrentTemperature() {
-        if (this.currentTemperature == minTemperature) {
-            return;
-        }
-        this.currentTemperature --;
-    }
-}
-
+        public void decreaseCurrentTemperature() {
+            if (this.currentTemperature <= minTemperature) {
+                currentTemperature = minTemperature;
+                return;
+            }
+            this.currentTemperature--;
+                }}
